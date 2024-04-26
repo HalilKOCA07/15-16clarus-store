@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import logo from "../assets/codeveloper-logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AuthContexts from "../contexts/AuthProvider";
 import { openNavbar, closeNavbar, logoutIcon } from "../helper/icons";
 const navigation = [
   {
     title: "Home",
-    path: "/dashboard",
+    path: "/dashboard/home",
   },
   {
     title: "About",
@@ -19,6 +19,7 @@ const navigation = [
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const [show, setShow] = useState();
   // const {user} = useContext(AuthContexts)
   console.log(show);
@@ -49,7 +50,7 @@ const Navbar = () => {
           })}
         </ul>
         <div className="">
-          <button className="flex items-center justify-center gap-2 w-24 py-1 hover:bg-yellow-500 rounded-md">
+          <button className="flex items-center justify-center gap-2 w-24 py-1 hover:bg-yellow-500 rounded-md" onClick={() =>navigate("/dashboard")}>
             logOut{logoutIcon}
           </button>
         </div>
