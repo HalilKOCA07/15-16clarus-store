@@ -21,36 +21,39 @@ const navigation = [
 const Navbar = () => {
   const [show, setShow] = useState();
   // const {user} = useContext(AuthContexts)
+  console.log(show);
   return (
-    <div className=" w-screen bg-yellow-500 flex-col items-center justify-start gap-12 md:flex-row">
-      <a href="www.google.come" className="flex justify-center items-center">
-        <img src={logo} alt="Co-Developers" className="w-[110px] h-[75px]" />
-        <span className="hidden md:inline-block pt-5 ms-3 font-monserrat text-lg">
-          Co-Developers
-        </span>
-      </a>
-      <div>
-        <button onClick={() => setShow(!show)}>
-          {show ? closeNavbar : openNavbar}
-        </button>
+    <div className=" w-screen bg-yellow-200 justify-start md:flex px-5">
+      <div className="flex justify-between px-2 md:w-3/6">
+        <a href="www.google.come" className="flex justify-center items-center">
+          <img src={logo} alt="Co-Developers" className="w-[110px] h-[75px]" />
+          <span className="hidden md:inline-block pt-5 ms-3 font-monserrat text-lg">
+            Co-Developers
+          </span>
+        </a>
+        <div className="flex items-center md:hidden">
+          <button onClick={() => setShow(!show)}>
+            {show ? closeNavbar : openNavbar}
+          </button>
+        </div>
       </div>
-      <div className="bg-red-100 m-auto">
-        <ul className=" flex flex-col justify-center items-center gap-3 font-medium mt-5">
+
+      <div className={`${show ? "flex flex-col gap-3 border-yellow-500" : "hidden"} md:flex md:flex-row md:gap-3 items-center md:justify-between md:w-full`}>
+        <ul className={`flex flex-col md:flex-row`}>
           {navigation.map((item) => {
             return (
-              <li key={item.title} className="text-grey-500">
+              <li key={item.title} className="text-grey-500 text-center w-24 py-1 hover:bg-yellow-500 rounded-md">
                 <NavLink to={item.path}>{item.title}</NavLink>
               </li>
             );
           })}
         </ul>
-        <div className="bg-red-200">
-          <button className="flex items-center gap-2">
+        <div className="">
+          <button className="flex items-center justify-center gap-2 w-24 py-1 hover:bg-yellow-500 rounded-md">
             logOut{logoutIcon}
           </button>
         </div>
       </div>
-      <div>{/* <button>{user ? "logOut" : "Login"}</button> */}</div>
     </div>
   );
 };
