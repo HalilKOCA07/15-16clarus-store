@@ -1,10 +1,12 @@
 import React from 'react'
 import HomeStates from '../components/HomaStats'
+import Testimonial from '../components/Testimonial'
 
 const Home = () => {
   return (
-    <div>
+    <div className='m-auto w-screen sm:w-4/5 lg:w-3/5'>
       <HomeStates />
+      <Testimonial />
     </div>
   )
 }
