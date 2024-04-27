@@ -27,7 +27,7 @@ const Testimonial = () => {
 
   const [currentTest, setCurrentTest] = useState(0);
   return (
-    <div className="flex items-center flex-col mt-8">
+    <div className="flex items-center flex-col m-8 ">
         <h1 className="text-blue-800">What people are saying...</h1>
       <ul className="sm:mx-5 lg:mx-12 ">
         {testimonial.map(({ avatar, name, title, quote }, index) =>
