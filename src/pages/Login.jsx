@@ -15,6 +15,7 @@ const Login = () => {
             e.preventDefault()
             if(email === "codeveloper@cw.com" && password === "admin"){
                 login({email, password})
+                
             }else{
                 alert("Kullanıcı bilgileri yanlış.")
             }

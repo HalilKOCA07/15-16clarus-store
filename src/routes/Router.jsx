@@ -2,21 +2,21 @@ import { Route, Routes } from "react-router-dom";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
-import ProductsDetails from "../pages/ProductsDetails";
 import About from "../pages/About";
 import NotFound from "../pages/NotFound";
-import Navbar from "../components/Navbar";
+import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path="/dashboard" element={<Login />} />
-        <Route path="/dashboard/home" element={<Home />} />
-        <Route path="/dashboard/products" element={<Products />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<PrivateRouter />}>
+          <Route path="" element={<Home />} />
+          <Route path="/dashboard/products" element={<Products />} />
+          <Route path="about" element={<About />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
-        <Route path="/dashboard/about" element={<About />} />
       </Routes>
     </>
   );
