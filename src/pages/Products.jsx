@@ -1,9 +1,12 @@
 import React from 'react'
+import ProductsCard from '../components/ProductsCard'
+import SearchProduct from '../components/SearchProduct'
 
 const Products = () => {
   return (
     <div>
-      Products
+      <SearchProduct />
+      <ProductsCard />
     </div>
   )
 }

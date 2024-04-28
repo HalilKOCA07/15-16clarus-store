@@ -1,3 +1,5 @@
+import Loading from "./Loading";
+
 const HomeStates = () => {
   const stats = [
     {

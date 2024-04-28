@@ -1,6 +1,7 @@
 import React from 'react'
 import HomeStates from '../components/HomaStats'
 import Testimonial from '../components/Testimonial'
+import Loading from '../components/Loading'
 
 const Home = () => {
   return (

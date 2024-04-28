@@ -23,23 +23,32 @@ export const useProductsContext = () => {
 const ProductsProvider = ({children}) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState("")
 
     console.log(products)
     const getProducts = async() => {
         setLoading(true)
         try{
-            const res = await axios.get(`https://dummyjson.com/products/search?q=${search}`)
+            const {data} = await axios.get(`https://dummyjson.com/products/search?q=${search}`)
+            setProducts(data.products)
         }catch(error){
             console.log(error)
         }finally{
             setLoading(false)
         }
+        
     } 
 
     useEffect(() => {
         getProducts()
-    })
+    }, [search])
 
-    
+    const values = {products, loading, search, setSearch, setProducts}
+    return(
+        <productsContext.Provider value={values}>
+            {children}
+        </productsContext.Provider>
+    )
 }
+
+export default ProductsProvider
