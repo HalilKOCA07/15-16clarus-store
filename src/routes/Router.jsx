@@ -5,6 +5,7 @@ import Products from "../pages/Products";
 import About from "../pages/About";
 import NotFound from "../pages/NotFound";
 import PrivateRouter from "./PrivateRouter";
+import ProductDetails from "../pages/ProductDetails";
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path="/dashboard" element={<PrivateRouter />}>
           <Route path="" element={<Home />} />
           <Route path="/dashboard/products" element={<Products />} />
+          <Route path="/dashboard/products/:id" element={<ProductDetails />} />
           <Route path="about" element={<About />} />
         </Route>
         <Route path="*" element={<NotFound />} />
