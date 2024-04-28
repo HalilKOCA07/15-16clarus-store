@@ -11,7 +11,6 @@ const ProductsCard = () => {
   const { products, loading } = useProductsContext();
   console.log(products);
 
-
   return (
     <div>
       <div className="mt-10">
@@ -22,7 +21,7 @@ const ProductsCard = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 m-5">
             {products.map(({ category, id, thumbnail, title, price }) => {
               return (
-                <div key={id} className="w-[250px] m-auto cursor-pointer" onClick={() => navigate(`${id}`)}>
+                <div key={id} className="w-[250px] m-auto cursor-pointer" onClick={() => navigate(`${id}`, {details: {category, id, thumbnail, title, price}})}>
                   <img src={thumbnail} className="h-[350px]" alt="" />
                   <div className="flex justify-between gap-3 my-1">
                     <p>{title}</p>

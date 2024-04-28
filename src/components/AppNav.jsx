@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import logo from "../assets/codeveloper-logo.png";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthContexts from "../contexts/AuthProvider";
 import { openNavbar, closeNavbar, logoutIcon } from "../helper/icons";
 import Login from "../pages/Login";
@@ -24,6 +24,8 @@ const AppNav = () => {
   const [show, setShow] = useState();
   // const {user} = useContext(AuthContexts)
   console.log(show);
+  const location = useLocation()
+  console.log(location.pathname)
 
   const handleLogOut = () => {
     sessionStorage.removeItem("user")
@@ -48,7 +50,7 @@ const AppNav = () => {
         <ul className={`flex flex-col md:flex-row`}>
           {navigation.map((item) => {
             return (
-              <li key={item.title} className="text-grey-500 text-center w-24 py-1 hover:bg-yellow-500 rounded-md">
+              <li key={item.title} className={`text-grey-500 text-center w-24 py-1 hover:bg-yellow-500 rounded-md ${location.pathname === item.path ? "bg-yellow-400" : ""}`}>
                 <NavLink to={item.path}>{item.title}</NavLink>
               </li>
             );
